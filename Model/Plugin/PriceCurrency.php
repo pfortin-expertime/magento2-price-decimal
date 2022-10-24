@@ -40,6 +40,10 @@ class PriceCurrency extends PriceFormatPluginAbstract
         ...$args
     ) {
         if ($this->getConfig()->isEnable()) {
+		
+			if (is_string($price)) {
+                $price = floatval($price);
+            }
             return round($price, $this->getPricePrecision());
 
         } else {
